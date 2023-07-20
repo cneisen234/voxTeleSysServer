@@ -9,9 +9,9 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-// const grocery = require("./routes/api/grocery");
+const item = require("./routes/api/item");
 const category = require("./routes/api/category");
-// app.use("/api/grocery", grocery);
+app.use("/api/item", item);
 app.use("/api/category", category);
 
 // Handle Production
