@@ -4,6 +4,7 @@ const pool = require("../../pool");
 const router = express.Router();
 
 router.get("/:category_id", (req, res) => {
+  //only query the items assocated with the category_id
   pool
     .query("SELECT * from items where category_id=$1", [req.params.category_id])
     .then((result) => {

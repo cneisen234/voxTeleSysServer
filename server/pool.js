@@ -3,6 +3,8 @@ const url = require("url");
 
 let config = {};
 
+//set up to deply to heroku if need be.
+
 if (process.env.DATABASE_URL) {
   // Heroku gives a url, not a connection object
   // https://github.com/brianc/node-pg-pool

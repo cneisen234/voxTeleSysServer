@@ -9,6 +9,8 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
+//express router used to help organize files and keep the structure clean.
+
 const item = require("./routes/api/item");
 const category = require("./routes/api/category");
 const cart = require("./routes/api/cart");
