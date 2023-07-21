@@ -11,8 +11,10 @@ app.use(cors());
 
 const item = require("./routes/api/item");
 const category = require("./routes/api/category");
+const cart = require("./routes/api/cart");
 app.use("/api/item", item);
 app.use("/api/category", category);
+app.use("/api/cart", cart);
 
 // Handle Production
 
