@@ -56,7 +56,8 @@ router.put("/removefromcart", async (req, res) => {
         JSON.stringify(updatedData)
       );
     } else {
-      console.log(data);
+      // no way in redis to target with index to remove, won't consistantly delete if you pass in the stringified value.
+      // therefore use lset so you can target with redisIndex, set the value to "DELETED" and then delete that string from redis with lrem
       await redis.lset(`list:customerCart`, data.redisIndex, "DELETED");
       //if only one item exists, go ahead and remove it.
       await redis.lrem(`list:customerCart`, 1, "DELETED");
