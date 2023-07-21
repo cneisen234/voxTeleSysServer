@@ -56,8 +56,10 @@ router.put("/removefromcart", async (req, res) => {
         JSON.stringify(updatedData)
       );
     } else {
+      console.log(data);
+      await redis.lset(`list:customerCart`, data.redisIndex, "DELETED");
       //if only one item exists, go ahead and remove it.
-      await redis.lrem(`list:customerCart`, 1, JSON.stringify(data));
+      await redis.lrem(`list:customerCart`, 1, "DELETED");
     }
     res.sendStatus(200);
   } catch (e) {
